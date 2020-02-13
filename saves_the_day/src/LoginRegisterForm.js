@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Form, Button, Grid, Message, Segment } from 'semantic-ui-react'
+import { Form, Grid, Message, Segment } from 'semantic-ui-react'
+import { Button, Card, Row, Col, TextInput } from 'react-materialize'
 
 class LoginRegisterForm extends Component {
     constructor() {
@@ -13,6 +14,7 @@ class LoginRegisterForm extends Component {
         }
     }
 
+  
     login = async (loginInfo) => {
         const response = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/users/login`, {
             method: 'POST',
@@ -21,21 +23,20 @@ class LoginRegisterForm extends Component {
             headers: {
                 'Content-Type': 'application/json'
             }
-        })
-
+        });
         const parsedLoginResponse = await response.json()
 
-        if(parsedLoginResponse.status.code === 200) {
+        if (parsedLoginResponse.status.code === 200) {
             this.props.loggedStatus(parsedLoginResponse.data.email)
-            this.props.history.push('/characters')
         } else {
-            console.log('Login Failed: ', parsedLoginResponse)
+            console.log('Login Failed: ', parsedLoginResponse);
         }
     }
 
     register = async (registerInfo) => {
         const response = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/users/register`, {
             method: 'POST',
+            // This is necessary when sessions have been set up in the back-end
             credentials: 'include',
             body: JSON.stringify(registerInfo),
             headers: {
@@ -43,13 +44,15 @@ class LoginRegisterForm extends Component {
             }
         })
 
-        const parsedRegisterResponse = await response.json()
+        const parsedRegisterResponse = await response.json();
 
         if (parsedRegisterResponse.status.code === 200) {
+            // We can pass the user's email back up to App.js to distribute to child components
             this.props.loggedStatus(parsedRegisterResponse.data.email)
-            this.props.history.push('/characters')
+            // Using React Router, we can redirect users to the /characters route (front-end route, not back-end route)
+            this.props.history.push('/characters');
         } else {
-            console.log('Register Failed: ', parsedRegisterResponse)
+            console.log('Register Failed: ', parsedRegisterResponse);
         }
     }
 
@@ -95,12 +98,12 @@ class LoginRegisterForm extends Component {
         return (
         <div className="LoginRegisterForm">
             { !this.props.loggedIn ?
-                <Grid
+                <Row
                     textAlign='center'
                     style={{ height: '100vh' }}
                     verticalAlign='middle'
                 >
-                    <Grid.Column
+                    <Col
                         style={{ maxWidth: 450 }}
                     >
                         <Form
@@ -110,7 +113,7 @@ class LoginRegisterForm extends Component {
                             <Segment stacked>
                                 { this.state.action === "register" ?
                                     <React.Fragment>
-                                        <Form.Input
+                                        <TextInput
                                             fluid icon='user'
                                             iconPosition='left'
                                             type="text"
@@ -122,7 +125,7 @@ class LoginRegisterForm extends Component {
                                     </React.Fragment>
                                 : null
                                 }
-                                <Form.Input
+                                <TextInput
                                     fluid icon='mail'
                                     iconPosition='left'
                                     type="email"
@@ -131,7 +134,7 @@ class LoginRegisterForm extends Component {
                                     value={this.state.email}
                                     onChange={this.handleChange}
                                 />
-                                <Form.Input
+                                <TextInput
                                     fluid icon='lock'
                                     iconPosition='left'
                                     type="password"
@@ -164,8 +167,8 @@ class LoginRegisterForm extends Component {
                                 </small>
                             }
                         </Message>
-                    </Grid.Column>
-                </Grid>
+                    </Col>
+                </Row>
                 :
                 <div></div>}
             </div>

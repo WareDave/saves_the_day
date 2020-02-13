@@ -32,7 +32,7 @@ class App extends Component {
   }
 
   logout = async () => {
-    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/users/logout`, {
+    var response = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/users/logout`, {
       method: 'GET',
       credentials: 'include',
       headers: {
@@ -40,7 +40,7 @@ class App extends Component {
       }
     })
 
-  const parsedLogoutResponse = await response.json()
+  var parsedLogoutResponse = await response.json()
 
   if (parsedLogoutResponse.status.code === 200) {
     this.setState({

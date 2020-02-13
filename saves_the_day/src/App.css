@@ -1,8 +1,15 @@
+
+.material-icons {
+  font-size: 20px;
+}
 body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  background: linear-gradient(0.50turn, #00070a, #c91d34, #c7b2a8);
 }
+
+
 
 main {
   flex: 1 0 auto;
