@@ -157,9 +157,9 @@ class LoginRegisterForm extends Component {
                                     </span>
                                 </small>
                                 :
-                                <small>Need an account?
+                                <small>Need That Shit
                                     <span onClick={this.switchForm}>
-                                        Click here to register.
+                                        Click here to Get That Shit.
                                     </span>
                                 </small>
                             }

@@ -56,7 +56,7 @@ class App extends Component {
     return (
      
       <main>
-         <Router>
+         
         <Header
           loggedIn={this.state.loggedIn}
           loggedInUserEmail={this.state.loggedInUserEmail}
@@ -87,7 +87,7 @@ class App extends Component {
             component={ My404 }
           />
         </Switch>
-        </Router>
+       
 
       </main>
      

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Router } from 'react-router-dom'
 import { Header, Container, Menu } from 'semantic-ui-react'
 
 class HeaderComponent extends Component {
@@ -9,6 +9,7 @@ class HeaderComponent extends Component {
 
     render() {
         return (
+            
             <Header>
                 <Menu fixed='top' inverted>
                     <Container>
@@ -19,7 +20,7 @@ class HeaderComponent extends Component {
                         : null    
                         }
                         <Menu.Item>
-                            <Link to='/boards'>Post-Its</Link>
+                            <Link to='/characters'>Fun On A Bun</Link>
                         </Menu.Item>
                         { this.props.loggedIn ?
                             <Menu.Item>
@@ -40,6 +41,7 @@ class HeaderComponent extends Component {
                     </Container>
                 </Menu>
             </Header>
+            
         )
     }
 }
