@@ -1,5 +1,12 @@
 import React, { Component } from 'react'
-import { Form, Button, Grid, Message, Segment } from 'semantic-ui-react'
+import { Form, Button, Grid, Message, Segment, Label, Dropdown, Icon} from 'semantic-ui-react'
+
+
+const options = [
+    { key: '@gmail.com', text: '@gmail.com', value: '@gmail.com' },
+    { key: '@outlook.com', text: '@outlook.com', value: '@outlook.com' },
+    { key: '@hotmail.com', text: '@hotmail.com', value: '@hotmail.com' },
+  ]
 
 class LoginRegisterForm extends Component {
     constructor() {
@@ -14,6 +21,8 @@ class LoginRegisterForm extends Component {
     }
 
     login = async (loginInfo) => {
+        
+ try {       
         const response = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/users/login`, {
             method: 'POST',
             credentials: 'include',
@@ -32,8 +41,14 @@ class LoginRegisterForm extends Component {
             console.log('Login Failed: ', parsedLoginResponse)
         }
     }
+    catch{ 
+        console.log(this.username)
+    }
+} 
 
     register = async (registerInfo) => {
+   
+try {        
         const response = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/users/register`, {
             method: 'POST',
             credentials: 'include',
@@ -43,15 +58,21 @@ class LoginRegisterForm extends Component {
             }
         })
 
+    
         const parsedRegisterResponse = await response.json()
-
+    
         if (parsedRegisterResponse.status.code === 200) {
             this.props.loggedStatus(parsedRegisterResponse.data.email)
             this.props.history.push('/characters')
         } else {
             console.log('Register Failed: ', parsedRegisterResponse)
         }
-    }
+    
+}
+catch {
+    console.log(this.username)
+}
+}
 
     handleChange = e => {
         this.setState({
@@ -122,15 +143,23 @@ class LoginRegisterForm extends Component {
                                     </React.Fragment>
                                 : null
                                 }
+                             <Label>
+                                <Icon name='hand point down' /> Valid Email 
+                            </Label>   
                                 <Form.Input
                                     fluid icon='mail'
                                     iconPosition='left'
                                     type="email"
                                     name="email"
                                     placeholder="Email"
+                                    label={<Dropdown defaultValue='@gmail.com' options={options} />}
                                     value={this.state.email}
                                     onChange={this.handleChange}
+
                                 />
+                            <Label>
+                                <Icon name='mail' /> 23
+                            </Label>   
                                 <Form.Input
                                     fluid icon='lock'
                                     iconPosition='left'
@@ -140,9 +169,11 @@ class LoginRegisterForm extends Component {
                                     value={this.state.password}
                                     onChange={this.handleChange}
                                 />
-                                <Button
+                                <Button 
+                                   
                                     fluid size='large'
                                     type="Submit"
+                                    color="pink"
                                 >
                                     { this.state.action === "register" ? "Register"
                                     : "Log In"}
@@ -151,15 +182,15 @@ class LoginRegisterForm extends Component {
                         </Form>
                         <Message>
                             { this.state.action === "register" ?
-                                <small>Already have an account?
+                                <small>Got That Shit?
                                     <span onClick={this.switchForm}>
-                                        Click here to log in.
+                                        Make It So
                                     </span>
                                 </small>
                                 :
-                                <small>Need That Shit
+                                <small>Need That Shit?
                                     <span onClick={this.switchForm}>
-                                        Click here to Get That Shit.
+                                    Sign Up Here
                                     </span>
                                 </small>
                             }

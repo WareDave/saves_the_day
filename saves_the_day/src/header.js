@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link, Router } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Header, Container, Menu } from 'semantic-ui-react'
 
 class HeaderComponent extends Component {
@@ -10,7 +10,9 @@ class HeaderComponent extends Component {
     render() {
         return (
             
-            <Header>
+            <Header
+            color='violet'
+            >
                 <Menu fixed='top' inverted>
                     <Container>
                         { !this.props.loggedIn ?

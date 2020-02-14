@@ -8,39 +8,14 @@ import { Grid, Button } from 'semantic-ui-react'
 class CharacterContainer extends Component {
 
     state = {
-        character: [],
+        characters: [],
         createModalOpen: false,
         editModalOpen: false,
         CharacterToEdit: {
-            loggedUser: '',
-            id: '',
-            realm: '',
             name: '',
-            classLevel: '',
-            background: '',
-            race: '',
-            alighment: '',
-            exp: '',
-            strength: '',
-            dex: '',
-            const: '',
-            intelligence: '',
-            wisdom: '',
-            charisma: '',
-            inspiration: '',
-            saving: '',
-            skills: '',
-            passive: '',
-            armorclass: '',
-            init: '',
-            speed: '',
-            currenthp: '',
-            temphp: '',
-            hdice: '',
-            dsaves: '',
-            atks_spells: '',
-            equipment: '',
-            fandt: ''   
+            loggedUser: '',
+            body: '',
+            id: '',
         }
     }
 
@@ -50,24 +25,24 @@ class CharacterContainer extends Component {
         })
     }
 
-    addCharacter = async (e, CharacterFromTheForm) => {
+    addCharacter = async (e, characterFromTheForm) => {
         e.preventDefault();
 
         try {
-            console.log(CharacterFromTheForm)
-            const createdCharacterResponse = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/character/`, {
+            console.log(characterFromTheForm)
+            const createdhaeacterResponse = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/characters/`, {
                 method: 'POST',
-                body: JSON.stringify(CharacterFromTheForm),
+                body: JSON.stringify(characterFromTheForm),
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 credentials: 'include'
             });
 
-            const parsedResponse = await createdCharacterResponse.json()
+            const parsedResponse = await createdhaeacterResponse.json()
 
             this.setState({
-                character: [...this.state.character, parsedResponse.data]
+                characters: [...this.state.characters, parsedResponse.data]
             })
 
             this.closeCreateModal()
@@ -83,24 +58,24 @@ class CharacterContainer extends Component {
     )}
 
     componentDidMount() {
-        this.getcharacter()
+        this.getCharacters()
     }
 
-    getcharacter = async () => {
+    getCharacters = async () => {
         try {
-            const character = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/character/`, { credentials: 'include' })
-            const parsedcharacter = await character.json()
+            const characters = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/characters/`, { credentials: 'include' })
+            const parsedCharacters = await characters.json()
 
             this.setState({
-                character: parsedcharacter.data
+                characters: parsedCharacters.data
             })
         } catch (err) {
             console.log(err);
         }
     } 
     
-    editcharacter = (idOfcharacterEdit) => {
-        const CharacterToEdit = this.state.character.find(character => character.id === idOfcharacterEdit)
+    editCharacter = (idOfCharactersEdit) => {
+        const CharacterToEdit = this.state.characters.find(character => character.id === idOfCharactersEdit)
 
         this.setState({
             editModalOpen: true,
@@ -123,7 +98,7 @@ class CharacterContainer extends Component {
         e.preventDefault()
 
         try {
-            const updateResponse = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/character/${this.state.CharacterToEdit.id}`, {
+            const updateResponse = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/characters/${this.state.CharacterToEdit.id}`, {
                 method: 'PUT',
                 body: JSON.stringify(this.state.CharacterToEdit),
                 headers: {
@@ -134,7 +109,7 @@ class CharacterContainer extends Component {
 
             const updateResponseParsed = await updateResponse.json()
 
-            const newCharacterArrayWithUpdate = this.state.character.map((character) => {
+            const newCharacterArrayWithUpdate = this.state.characters.map((character) => {
                 if (character.id === updateResponseParsed.data.id) {
                     character = updateResponseParsed.data
                 }
@@ -142,7 +117,7 @@ class CharacterContainer extends Component {
             })
 
             this.setState({
-                character: newCharacterArrayWithUpdate
+                characters: newCharacterArrayWithUpdate
             })
 
             this.closeEditModal()
@@ -159,7 +134,7 @@ class CharacterContainer extends Component {
     }
 
     deleteCharacter = async (id) => {
-        const deleteCharacterResponse = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/character/${id}`, {
+        const deleteCharacterResponse = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/characters/${id}`, {
             method: 'DELETE',
             credentials: 'include'
         })
@@ -167,29 +142,29 @@ class CharacterContainer extends Component {
         const deleteCharacterParsed = await deleteCharacterResponse.json()
 
         this.setState({
-            character: this.state.character.filter((character) => character.id !== id)
+            characters: this.state.characters.filter((character) => character.id !== id)
         })
     }
 
     render() {
-        const { loggedIn } = this.props
+        
 
         return (
             <div>
-                { loggedIn ?
+                
                     <Grid 
                         textAlign='center'
                         style={{ marginTop: '7em', height: '100%' }}
                     >
                         <Grid.Row>
-                            <Button onClick={this.createcharacter}>Create New character</Button>
+                            <Button negative onClick={this.createCharacter}>Make A Player Out Of You</Button>
                         </Grid.Row>
-                            
+                           
                             <Grid.Row>
                                 <CharacterList
-                                    character={this.state.character}
+                                    characters={this.state.characters}
                                     deleteCharacter={this.deleteCharacter}
-                                    editcharacter={this.editcharacter}
+                                    editCharacter={this.editCharacter}
                                 />
                             </Grid.Row>
                             <CreateCharacter 
@@ -205,16 +180,16 @@ class CharacterContainer extends Component {
                                 handleEditChange={this.handleEditChange}
                             />
                     </Grid>
-                :
+                
                 <Grid 
                     textAlign='center'
                     style={{ marginTop: '7em', height: '100%' }}
                     verticalAlign='top'
                     
                 >
-                    Did I Do That. Go Reg you Ass Hat
+                    Go Fucking Reg.
                 </Grid>
-                }
+                
             </div>
         )
     }

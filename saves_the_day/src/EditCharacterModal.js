@@ -14,7 +14,7 @@ function EditCharacterModal(props) {
                     onSubmit={props.updateBoard}
                 >
                     <Form.Field>
-                        <label>Class & Level</label>
+                        <label>Class and Level</label>
                         <Form.Input
                             type="text"
                             name="classLevel"
@@ -31,15 +31,7 @@ function EditCharacterModal(props) {
                             onChange={props.handleEditChange}
                         />
                     </Form.Field>
-                    {/* <Form.Field>
-                            <label>Image</label>
-                            <Form.Input 
-                                type="text"
-                                name="image"
-                                value={props.CharacterToEdit.image}
-                                onChange={props.handleEditChange}
-                                />                   
-                    </Form.Field> */}
+                    
                     <Form.Field>
                             <label>Alighment</label>
                             <Form.Input 
@@ -185,7 +177,7 @@ function EditCharacterModal(props) {
                                 />                   
                     </Form.Field>
                     <Form.Field>
-                            <label>Attacks & Spells</label>
+                            <label>Attacks and Spells</label>
                             <Form.Input 
                                 type="text"
                                 name="atks_spells"
@@ -203,7 +195,7 @@ function EditCharacterModal(props) {
                                 />                   
                     </Form.Field>
                     <Form.Field>
-                            <label>F & T</label>
+                            <label>F and T</label>
                             <Form.Input 
                                 type="text"
                                 name="fandt"
@@ -212,7 +204,9 @@ function EditCharacterModal(props) {
                                 />                   
                     </Form.Field>
                     
-                    <Button type="submit"><a class="btn-floating btn-large red"><i class="large material-icons">mode_edit</i></a>Make It So</Button>
+                    <Button negative
+                    type="submit"
+                    >Make It So</Button>
                 </Form>
             </Modal.Content>
         </Modal>

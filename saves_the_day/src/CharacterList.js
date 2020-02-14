@@ -5,7 +5,7 @@ function CharacterList(props) {
 
     const { characters } = props
 
-    const CharacterList = characters.map((character) => {
+    const characterList = characters.map((character) => {
 
         return (
 
@@ -53,7 +53,7 @@ function CharacterList(props) {
 
     return (
         <Card.Group centered>
-            { CharacterList }
+            { characterList }
         </Card.Group>
     )
 }
