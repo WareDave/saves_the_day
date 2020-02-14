@@ -157,9 +157,7 @@ catch {
                                     onChange={this.handleChange}
 
                                 />
-                            <Label>
-                                <Icon name='mail' /> 23
-                            </Label>   
+                             
                                 <Form.Input
                                     fluid icon='lock'
                                     iconPosition='left'
