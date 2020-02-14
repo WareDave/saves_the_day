@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import LoginRegisterForm from './LoginRegisterForm'
 import CharacterContainer from './CharacterCountainer'
-import Header from './header'
+import Header from './Header'
 import { Route, Switch } from 'react-router-dom'
 import './App.css'
 

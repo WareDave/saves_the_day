@@ -98,12 +98,15 @@ class CharacterContainer extends Component {
         e.preventDefault()
 
         try {
-            const updateResponse = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/characters/${this.state.CharacterToEdit.id}`, {
+            const updateResponse = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/characters/${this.state.CharacterToEdit.id}`, 
+            {
                 method: 'PUT',
+                
                 body: JSON.stringify(this.state.CharacterToEdit),
                 headers: {
                     'Content-Type': 'application/json'
                 },
+                
                 credentials: 'include'
             })
 
@@ -157,7 +160,7 @@ class CharacterContainer extends Component {
                         style={{ marginTop: '7em', height: '100%' }}
                     >
                         <Grid.Row>
-                            <Button negative onClick={this.createCharacter}>Make A Player Out Of You</Button>
+                            <Button negative onClick={this.createCharacter}>Wanna Get Down</Button>
                         </Grid.Row>
                            
                             <Grid.Row>

@@ -3,12 +3,12 @@
   font-size: 20px;
 }
 body {
+  font-family: 'Creepster', cursive;
   display: flex;
   min-height: 100vh;
   flex-direction: column;
   background: linear-gradient(0.50turn, #00070a, #c91d34, #c7b2a8);
 }
-
 
 
 main {

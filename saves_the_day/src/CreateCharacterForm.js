@@ -94,7 +94,7 @@ class CreateCharacter extends Component {
                                 />
                         </Form.Field>
                         <Form.Field>
-                            <label>Class & Level</label>
+                            <label>Class and Level</label>
                             <Form.Input 
                                 type="text"
                                 name="classLevel"
@@ -104,17 +104,7 @@ class CreateCharacter extends Component {
                                 onChange={this.handleChange}
                                 />                   
                         </Form.Field>
-                        {/* <Form.Field>
-                            <label>Image</label>
-                            <Form.Input 
-                                type="text"
-                                fluid icon="picture"
-                                iconPosition="left"
-                                name="image"
-                                value={this.state.image}
-                                onChange={this.handleChange}
-                                />                   
-                        </Form.Field> */}
+                      
                         <Form.Field>
                             <label>Background</label>
                             <Form.Input 
@@ -172,8 +162,8 @@ class CreateCharacter extends Component {
                         <Form.Field>
                             <label>Const:</label>
                             <Form.Input 
-                                type="const"
-                                name="exp"
+                                type="text"
+                                name="const"
                                 value={this.state.const}
                                 onChange={this.handleChange}
                                 />                   
@@ -191,7 +181,7 @@ class CreateCharacter extends Component {
                             <label>Wisdom:</label>
                             <Form.Input 
                                 type="text"
-                                name="Wisdom"
+                                name="wisdom"
                                 value={this.state.wisdom}
                                 onChange={this.handleChange}
                                 />                   
@@ -209,7 +199,7 @@ class CreateCharacter extends Component {
                             <label>Inspiration</label>
                             <Form.Input 
                                 type="text"
-                                name="Inspiration"
+                                name="inspiration"
                                 value={this.state.inspiration}
                                 onChange={this.handleChange}
                                 />                   
@@ -224,7 +214,7 @@ class CreateCharacter extends Component {
                                 />                   
                         </Form.Field>
                         <Form.Field>
-                            <label>SKills</label>
+                            <label>Skills</label>
                             <Form.Input 
                                 type="text"
                                 name="skills"
@@ -272,8 +262,8 @@ class CreateCharacter extends Component {
                             <label>Current HP</label>
                             <Form.Input 
                                 type="text"
-                                name="init"
-                                value={this.state.init}
+                                name="currenthp"
+                                value={this.state.currenthp}
                                 onChange={this.handleChange}
                                 />                   
                         </Form.Field>
@@ -287,7 +277,7 @@ class CreateCharacter extends Component {
                                 />                   
                         </Form.Field>
                         <Form.Field>
-                            <label>Attacks & Spells</label>
+                            <label>Attacks and Spells</label>
                             <Form.Input 
                                 type="text"
                                 name="atks_spells"
@@ -299,13 +289,13 @@ class CreateCharacter extends Component {
                             <label>Equipment</label>
                             <Form.Input 
                                 type="text"
-                                name="Equipment"
+                                name="equipment"
                                 value={this.state.equipment}
                                 onChange={this.handleChange}
                                 />                   
                         </Form.Field>
                         <Form.Field>
-                            <label>F & T</label>
+                            <label>F and T</label>
                             <Form.Input 
                                 type="text"
                                 name="fandt"
@@ -315,7 +305,7 @@ class CreateCharacter extends Component {
                         </Form.Field>
                         
 
-                        <Button type='submit'>Submit</Button>
+                        <Button type='submit'>Make It So</Button>
                     </Form>
                 </Modal.Content>
             </Modal>
