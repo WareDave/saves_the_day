@@ -21,8 +21,8 @@ class LoginRegisterForm extends Component {
     }
 
     login = async (loginInfo) => {
-        
- try {       
+    loginInfo.username = "temp user"  
+    try {       
         const response = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/users/login`, {
             method: 'POST',
             credentials: 'include',
@@ -42,7 +42,7 @@ class LoginRegisterForm extends Component {
         }
     }
     catch{ 
-        console.log(this.username)
+        console.log(this.state.username)
     }
 } 
 

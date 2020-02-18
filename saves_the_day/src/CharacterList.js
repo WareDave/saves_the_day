@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Button, Image } from 'semantic-ui-react'
+import { Card, Button } from 'semantic-ui-react'
 
 function CharacterList(props) {
 
@@ -10,7 +10,6 @@ function CharacterList(props) {
         return (
 
             <Card key={character.id}>
-                <Image src={character.image} wrapped ui={false} />
                 <Card.Content>
                     <Card.Header><i className="material-icons">language</i> {character.realm}</Card.Header><br/>
                     <Card.Header><i className="material-icons">face</i> {character.name}</Card.Header><br/>
@@ -39,7 +38,7 @@ function CharacterList(props) {
                     <Card.Description><i className="material-icons">flash_on</i> {character.atks_spells}</Card.Description><br/>
                     <Card.Description><i className="material-icons">message</i> {character.equipment}</Card.Description><br/>
                     <Card.Description><i className="material-icons">message</i> {character.fandt}</Card.Description><br/>
-                    <Card.Description><i className="material-icons">fingerprint</i> {character.loggedUser.username}</Card.Description>
+                    <Card.Description><i className="material-icons">fingerprint</i> {character.loggedUser_id.username}</Card.Description>
                 </Card.Content>
                 <Card.Content extra>
                     <Button onClick={() => props.deleteCharacter(character.id)}>Kill Character
@@ -53,7 +52,7 @@ function CharacterList(props) {
 
     return (
         <Card.Group centered>
-            { characterList }
+            { characterList}
         </Card.Group>
     )
 }

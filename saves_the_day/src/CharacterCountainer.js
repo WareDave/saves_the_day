@@ -13,9 +13,34 @@ class CharacterContainer extends Component {
         editModalOpen: false,
         CharacterToEdit: {
             name: '',
-            loggedUser: '',
-            body: '',
             id: '',
+            loggedUser: '',
+            classLevel: '',
+            background: '',
+            race: '',
+            alighment: '',
+            exp: '',
+            strength: '',
+            dex: '',
+            const: '',
+            intelligence: '',
+            wisdom: '',
+            charisma: '',
+            inspiration: '',
+            saving: '',
+            skills: '',
+            passive: '',
+            armorclass: '',
+            // init: '',
+            speed: '',
+            currenthp: '',
+            temphp: '',
+            hdice: '',
+            dsaves: '',
+            atks_spells: '',
+            equipment: '',
+            fandt: ''   
+           
         }
     }
 
@@ -30,17 +55,19 @@ class CharacterContainer extends Component {
 
         try {
             console.log(characterFromTheForm)
-            const createdhaeacterResponse = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/characters/`, {
+            const createdCharacterResponse = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/characters/`, {
                 method: 'POST',
                 body: JSON.stringify(characterFromTheForm),
+                mode: 'no-cors',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    
                 },
                 credentials: 'include'
-            });
+            })
 
-            const parsedResponse = await createdhaeacterResponse.json()
-
+            const parsedResponse = await createdCharacterResponse.json()
+            console.log(parsedResponse)
             this.setState({
                 characters: [...this.state.characters, parsedResponse.data]
             })
@@ -48,6 +75,8 @@ class CharacterContainer extends Component {
             this.closeCreateModal()
         } catch (err) {
             console.log('error: ', err)
+            
+            
         }
     }
 
@@ -63,9 +92,13 @@ class CharacterContainer extends Component {
 
     getCharacters = async () => {
         try {
-            const characters = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/characters/`, { credentials: 'include' })
+            const characters = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/characters/`,
+            {
+                method: "GET", 
+                credentials: "include"
+            })
             const parsedCharacters = await characters.json()
-
+            console.log(parsedCharacters)
             this.setState({
                 characters: parsedCharacters.data
             })
@@ -75,20 +108,20 @@ class CharacterContainer extends Component {
     } 
     
     editCharacter = (idOfCharactersEdit) => {
-        const CharacterToEdit = this.state.characters.find(character => character.id === idOfCharactersEdit)
+        const characterToEdit = this.state.characters.find(characters => characters.id === idOfCharactersEdit)
 
         this.setState({
             editModalOpen: true,
-            CharacterToEdit: {
-                ...CharacterToEdit
+            characterToEdit: {
+                ...characterToEdit
             }
         })
     }
 
     handleEditChange = (e) => {
         this.setState({
-            CharacterToEdit: {
-                ...this.state.CharacterToEdit,
+            characterToEdit: {
+                ...this.state.characterToEdit,
                 [e.target.name]: e.target.value
             }
         })
@@ -98,29 +131,27 @@ class CharacterContainer extends Component {
         e.preventDefault()
 
         try {
-            const updateResponse = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/characters/${this.state.CharacterToEdit.id}`, 
-            {
+            const updateResponse = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/characters/${this.state.characterToEdit.id}`, {
                 method: 'PUT',
-                
-                body: JSON.stringify(this.state.CharacterToEdit),
+                body: JSON.stringify(this.state.characterToEdit),
+                mode: 'no-cors',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                
                 credentials: 'include'
             })
 
             const updateResponseParsed = await updateResponse.json()
 
-            const newCharacterArrayWithUpdate = this.state.characters.map((character) => {
-                if (character.id === updateResponseParsed.data.id) {
-                    character = updateResponseParsed.data
+            const newCharactersArrayWithUpdate = this.state.characters.map((characters) => {
+                if (characters.id === updateResponseParsed.data.id) {
+                    characters = updateResponseParsed.data
                 }
-                return character 
+                return characters 
             })
 
             this.setState({
-                characters: newCharacterArrayWithUpdate
+                characters: newCharactersArrayWithUpdate
             })
 
             this.closeEditModal()
@@ -145,9 +176,10 @@ class CharacterContainer extends Component {
         const deleteCharacterParsed = await deleteCharacterResponse.json()
 
         this.setState({
-            characters: this.state.characters.filter((character) => character.id !== id)
+            characters: this.state.characters.filter((characters) => characters.id !== id)
         })
     }
+
 
     render() {
         
@@ -160,7 +192,7 @@ class CharacterContainer extends Component {
                         style={{ marginTop: '7em', height: '100%' }}
                     >
                         <Grid.Row>
-                            <Button negative onClick={this.createCharacter}>Wanna Get Down</Button>
+                            <Button negative onClick={this.createCharacter}>Maker</Button>
                         </Grid.Row>
                            
                             <Grid.Row>

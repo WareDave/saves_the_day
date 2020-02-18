@@ -61,7 +61,7 @@ class CreateCharacter extends Component {
             skills: '',
             passive: '',
             armorclass: '',
-            init: '',
+            // init: '',
             speed: '',
             currenthp: '',
             temphp: '',
@@ -119,6 +119,8 @@ class CreateCharacter extends Component {
                             <Form.Input 
                                 type="text"
                                 name="race"
+                                fluid icon="globe"
+                                iconPosition="left"
                                 value={this.state.race}
                                 onChange={this.handleChange}
                                 />                   
@@ -240,7 +242,7 @@ class CreateCharacter extends Component {
                                 onChange={this.handleChange}
                                 />                   
                         </Form.Field>
-                        <Form.Field>
+                        {/* <Form.Field>
                             <label>Init</label>
                             <Form.Input 
                                 type="text"
@@ -248,7 +250,7 @@ class CreateCharacter extends Component {
                                 value={this.state.init}
                                 onChange={this.handleChange}
                                 />                   
-                        </Form.Field>
+                        </Form.Field> */}
                         <Form.Field>
                             <label>Speed</label>
                             <Form.Input 
