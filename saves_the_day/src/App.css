@@ -9,6 +9,7 @@ body {
   flex-direction: column;
   background: linear-gradient( black, #49020c, black);
   color: slategray;
+  text-align: center;
 }
 
 

@@ -8,11 +8,12 @@ class CreateCharacter extends Component {
         this.state = {
             realm: '',
             name: '',
+            loggedUser: '',
             classLevel: '',
             background: '',
             race: '',
             alighment: '',
-            exp: '',
+            experience: '',
             strength: '',
             dex: '',
             const: '',
@@ -48,8 +49,8 @@ class CreateCharacter extends Component {
             classLevel: '',
             background: '',
             race: '',
-            alighment: '',
-            exp: '',
+            alignment: '',
+            // experience: '',
             strength: '',
             dex: '',
             const: '',
@@ -98,8 +99,6 @@ class CreateCharacter extends Component {
                             <Form.Input 
                                 type="text"
                                 name="classLevel"
-                                // fluid icon="file text"
-                                // iconPosition="left"
                                 value={this.state.body}
                                 onChange={this.handleChange}
                                 />                   
@@ -125,24 +124,24 @@ class CreateCharacter extends Component {
                                 onChange={this.handleChange}
                                 />                   
                         </Form.Field>
-                        <Form.Field>
-                            <label>Alighment</label>
+                        {/* <Form.Field>
+                            <label>Alignment</label>
                             <Form.Input 
                                 type="text"
-                                name="alighment"
-                                value={this.state.alighment}
+                                name="alignment"
+                                value={this.state.alignment}
                                 onChange={this.handleChange}
                                 />                   
-                        </Form.Field>
-                        <Form.Field>
-                            <label>Exp:</label>
+                        </Form.Field> */}
+                        {/* <Form.Field>
+                            <label>Experience:</label>
                             <Form.Input 
                                 type="text"
-                                name="exp"
-                                value={this.state.exp}
+                                name="experience"
+                                value={this.state.experience}
                                 onChange={this.handleChange}
                                 />                   
-                        </Form.Field>
+                        </Form.Field> */}
                         <Form.Field>
                             <label>Strength:</label>
                             <Form.Input 

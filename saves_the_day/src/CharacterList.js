@@ -13,13 +13,12 @@ function CharacterList(props) {
                 <Card.Content>
                     <Image src= 'https://i.imgur.com/jLZM0wws.jpg' wrapped ui={false} />
                     <br/>
-                    <Card.Header><i className="material-icons">language</i> {character.realm}</Card.Header><br/>
+                    
                     <Card.Header><i className="material-icons">face</i> {character.name}</Card.Header><br/>
                     <Card.Description><i className="material-icons">verified_user</i>Class and Level: {character.classLevel}</Card.Description><br/>
                     <Card.Description><i className="material-icons">message</i>Background:  {character.background}</Card.Description><br/>
                     <Card.Description><i className="material-icons">info</i>Race: {character.race}</Card.Description><br/>
-                    <Card.Description><i className="material-icons">flag</i>Alighment {character.alighment}</Card.Description><br/>
-                    <Card.Description><i className="material-icons">exposure</i>Exp: {character.exp}</Card.Description><br/>
+                   
                     <Card.Description><i className="material-icons">fitness_center</i>Str: {character.strength}</Card.Description><br/>
                     <Card.Description><i className="material-icons">exposure</i>Dex: {character.dex}</Card.Description><br/>
                     <Card.Description><i className="material-icons">exposure</i>Const: {character.const}</Card.Description><br/>
@@ -40,12 +39,12 @@ function CharacterList(props) {
                     <Card.Description><i className="material-icons">flash_on</i>Atks and Spells: {character.atks_spells}</Card.Description><br/>
                     <Card.Description><i className="material-icons">message</i>Equipment: {character.equipment}</Card.Description><br/>
                     <Card.Description><i className="material-icons">message</i>F and T: {character.fandt}</Card.Description><br/>
-                    <Card.Description><i className="material-icons">fingerprint</i> {character.loggedUser_id.username}</Card.Description>
+                    <Card.Description><i className="material-icons">fingerprint</i> {character.loggedUser_id}</Card.Description>
                 </Card.Content>
                 <Card.Content extra>
-                    <Button onClick={() => props.deleteCharacter(character.id)}>Kill Character
+                    <Button negative onClick={() => props.deleteCharacter(character.id)}>Kill Character
                     </Button>
-                    <Button onClick={() => props.editCharacter(character.id)}>Edit Character Sheet
+                    <Button positive onClick={() => props.editCharacter(character.id)}>Edit Character Sheet
                     </Button>
                 </Card.Content>
             </Card>
@@ -54,7 +53,7 @@ function CharacterList(props) {
 
     return (
         <Card.Group centered>
-            { characterList}
+            { characterList }
         </Card.Group>
     )
 }

@@ -3,6 +3,7 @@ import { Form, Button, Header, Modal } from 'semantic-ui-react'
 
 function EditCharacterModal(props) {
     console.log("props: ", props)
+
     return (
         <Modal open={props.open} 
         closeIcon onClose={props.closeModal}
@@ -11,7 +12,7 @@ function EditCharacterModal(props) {
             <Modal.Content>
                 <Form
                     size='large'
-                    onSubmit={props.updateBoard}
+                    onSubmit={props.updateCharacter}
                 >
                     <Form.Field>
                         <label>Class and Level</label>
@@ -32,16 +33,16 @@ function EditCharacterModal(props) {
                         />
                     </Form.Field>
                     
-                    <Form.Field>
+                    {/* <Form.Field>
                             <label>Alighment</label>
                             <Form.Input 
                                 type="text"
-                                name="alighment"
+                                name="alignment"
                                 value={props.CharacterToEdit.alighment}
                                 onChange={props.handleEditChange}
                                 />                   
-                    </Form.Field>
-                    <Form.Field>
+                    </Form.Field> */}
+                    {/* <Form.Field>
                             <label>Experience</label>
                             <Form.Input 
                                 type="text"
@@ -49,7 +50,7 @@ function EditCharacterModal(props) {
                                 value={props.CharacterToEdit.experience}
                                 onChange={props.handleEditChange}
                                 />                   
-                    </Form.Field>
+                    </Form.Field> */}
                     <Form.Field>
                             <label>Strength</label>
                             <Form.Input 

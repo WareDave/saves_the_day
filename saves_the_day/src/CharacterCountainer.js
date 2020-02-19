@@ -11,15 +11,14 @@ class CharacterContainer extends Component {
         characters: [],
         createModalOpen: false,
         editModalOpen: false,
-        CharacterToEdit: {
+        characterToEdit: {
             name: '',
-            id: '',
             loggedUser: '',
             classLevel: '',
             background: '',
             race: '',
-            alighment: '',
-            exp: '',
+            // alignment: '',
+            experience: '',
             strength: '',
             dex: '',
             const: '',
@@ -31,7 +30,7 @@ class CharacterContainer extends Component {
             skills: '',
             passive: '',
             armorclass: '',
-            // init: '',
+            init: '',
             speed: '',
             currenthp: '',
             temphp: '',
@@ -54,11 +53,11 @@ class CharacterContainer extends Component {
         e.preventDefault();
 
         try {
-            console.log(characterFromTheForm)
+            
             const createdCharacterResponse = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/characters/`, {
                 method: 'POST',
                 body: JSON.stringify(characterFromTheForm),
-                mode: 'no-cors',
+              
                 headers: {
                     'Content-Type': 'application/json',
                     
@@ -108,12 +107,13 @@ class CharacterContainer extends Component {
     } 
     
     editCharacter = (idOfCharactersEdit) => {
-        const characterToEdit = this.state.characters.find(characters => characters.id === idOfCharactersEdit)
-
+        
+        const CharacterToEdit = this.state.characters.find(characters => characters.id === idOfCharactersEdit)
+        
         this.setState({
             editModalOpen: true,
             characterToEdit: {
-                ...characterToEdit
+                ...CharacterToEdit
             }
         })
     }
@@ -134,7 +134,7 @@ class CharacterContainer extends Component {
             const updateResponse = await fetch(`${process.env.REACT_APP_API_URL}/api/v1/characters/${this.state.characterToEdit.id}`, {
                 method: 'PUT',
                 body: JSON.stringify(this.state.characterToEdit),
-                mode: 'no-cors',
+                
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -192,7 +192,7 @@ class CharacterContainer extends Component {
                         style={{ marginTop: '7em', height: '100%' }}
                     >
                         <Grid.Row>
-                            <Button negative onClick={this.createCharacter}>Maker</Button>
+                            <Button negative onClick={this.createCharacter}>+</Button>
                         </Grid.Row>
                            
                             <Grid.Row>
@@ -210,7 +210,7 @@ class CharacterContainer extends Component {
                             <EditCharacterModal 
                                 open={this.state.editModalOpen}
                                 updateCharacter={this.updateCharacter}
-                                CharacterToEdit={this.state.CharacterToEdit}
+                                CharacterToEdit={this.state.characterToEdit}
                                 closeModal={this.closeEditModal}
                                 handleEditChange={this.handleEditChange}
                             />

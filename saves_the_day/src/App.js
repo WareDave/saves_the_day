@@ -50,7 +50,7 @@ class App extends Component {
   } else {
     console.log('Register Failed: ', parsedLogoutResponse)
   }
-}
+  }
 
   render() {
     return (
