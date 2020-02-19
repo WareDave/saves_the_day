@@ -196,7 +196,9 @@ catch {
                     </Grid.Column>
                 </Grid>
                 :
-                <div></div>}
+                <div>
+                    
+                </div>}
             </div>
         )
     }

@@ -9,7 +9,7 @@ import './App.css'
 const My404 = () => {
   return (
     <div>
-      Wrong Path
+      Wong Path
     </div>
   )
 }
