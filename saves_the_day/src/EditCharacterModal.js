@@ -123,7 +123,7 @@ function EditCharacterModal(props) {
                                 onChange={props.handleEditChange}
                                 />                   
                     </Form.Field>
-                    <Form.Field>
+                    {/* <Form.Field>
                             <label>Initiative</label>
                             <Form.Input 
                                 type="text"
@@ -131,7 +131,7 @@ function EditCharacterModal(props) {
                                 value={props.CharacterToEdit.init}
                                 onChange={props.handleEditChange}
                                 />                   
-                    </Form.Field>
+                    </Form.Field> */}
                     <Form.Field>
                             <label>Speed</label>
                             <Form.Input 

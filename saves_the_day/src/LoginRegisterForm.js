@@ -122,7 +122,7 @@ catch {
                     verticalAlign='middle'
                 >
                     <Grid.Column
-                        style={{ maxWidth: 450 }}
+                        style={{ maxWidth: 435 }}
                     >
                         <Form
                             size='large'
@@ -143,9 +143,9 @@ catch {
                                     </React.Fragment>
                                 : null
                                 }
-                             <Label>
+                             {/* <Label>
                                 <Icon name='hand point down' /> Valid Email 
-                            </Label>   
+                            </Label>    */}
                                 <Form.Input
                                     fluid icon='mail'
                                     iconPosition='left'

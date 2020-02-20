@@ -30,7 +30,7 @@ function CharacterList(props) {
                     <Card.Description><i className="material-icons">message</i>Skills: {character.skills}</Card.Description><br/>
                     <Card.Description><i className="material-icons">message</i>Passive: {character.passive}</Card.Description><br/>
                     <Card.Description><i className="material-icons">security</i>Armor Class {character.armorclass}</Card.Description><br/>
-                    <Card.Description><i className="material-icons">remove_red_eye</i>Init: {character.init}</Card.Description><br/>
+
                     <Card.Description><i className="material-icons">free_breakfast</i>Speed: {character.speed}</Card.Description><br/>
                     <Card.Description><i className="material-icons">local_hospital</i>Current HP: {character.currenthp}</Card.Description><br/>
                     <Card.Description><i className="material-icons">favorite_border</i>Temp HP: {character.temphp}</Card.Description><br/>
