@@ -56,12 +56,16 @@ class App extends Component {
     return (
      
       <main>
-         
-        <Header
-          loggedIn={this.state.loggedIn}
-          loggedInUserEmail={this.state.loggedInUserEmail}
-          logout={this.logout}
-        />
+          <nav>
+            <div class="nav-wrapper">
+              <a href="#" class="brand-logo">WareDave</a>
+              <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="/App">Home</a></li>
+                <li><a href="https://github.com/WareDave">WareDave Github</a></li>
+              </ul>
+            </div>
+          </nav>
+       
        
         <Switch>
           <Route
@@ -95,4 +99,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Post;
